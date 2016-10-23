@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:login, :create]
 
   def create
     auth_hash = request.env['omniauth.auth']
@@ -29,8 +30,10 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
+    flash[:notice] = "You have successfully logged out."
     redirect_to root_path
   end
+
 
   def login_failure; end
 

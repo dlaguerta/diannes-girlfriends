@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DiannesGirlfriends</title>
+  <title>Dianne's Ada Girlfriends</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <nav>
-    <%= link_to "Log In", 'auth/github' %>
+    <% if @user.nil? %>
+    <%= button_to "Log In with Github", 'auth/github', method: :get %>
+    <% else  %>
+      <%= button_to "Log Out", sessions_path, method: :delete %>
+    <% end %>
   </nav>
 <%= yield %>
 
