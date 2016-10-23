@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   delete "/sessions", to: "sessions#destroy"
 
+  get "/users", to: "users#index", path: "girlfriends"
+
 end

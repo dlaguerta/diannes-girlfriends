@@ -1,0 +1,10 @@
+<% if flash[:error] %>
+<p><%= flash[:error] %></p>
+<% end  %>
+
+<h1>All Dianne's Girlfriends </h1>
+<p> Here's a quick list of Dianne's girlfriends:</p>
+
+<% @users.each do |gf| %>
+ <p> <%=  "#{gf.name}"%> </p>
+<% end %>
